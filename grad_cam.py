@@ -55,7 +55,8 @@ def save_and_display_gradcam(img_path, heatmap, cam_path="cam.jpg", alpha=0.4):
     try:
       img = keras.preprocessing.image.load_img(img_path)
     except:
-      img = keras.preprocessing.image.img_to_array(img)
+      img = img_path
+    img = keras.preprocessing.image.img_to_array(img)
 
     # colocando o mapa de calor da escala adequada
     heatmap = np.uint8(255 * heatmap)
