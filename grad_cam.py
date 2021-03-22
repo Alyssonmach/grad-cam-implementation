@@ -1,6 +1,7 @@
 import tensorflow as tf
 from tensorflow import keras
 import numpy as np
+import matplotlib.cm as cm
 
 def get_img_array(img_path, size):
   
