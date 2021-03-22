@@ -1,7 +1,14 @@
+import tensorflow as tf
+from tensorflow import keras
+import numpy as np
+
 def get_img_array(img_path, size):
   
     # carregando a imagem com o keras e organizando suas dimensões
-    img = keras.preprocessing.image.load_img(img_path, target_size=size)
+    try:
+      img = keras.preprocessing.image.load_img(img_path, target_size=size)
+    pass:
+      img = img_path
     # pegando o array de píxels de cada um dos canais da imagem (299, 299, 3)
     array = keras.preprocessing.image.img_to_array(img)
     # adicionando a dimensão de 'batch' (1, 299, 299, 3)
