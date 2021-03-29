@@ -58,7 +58,7 @@ def pre_processamento():
     normal, _ = train_test_split(normal_data, test_size = 0.69, random_state = 42)
 
     print('\nquantidade de dados rotulados como normais (balanceado):', len(normal))
-    print('quantidade de dados rotulados como anormais:\n', len(abnormal_data))
+    print('quantidade de dados rotulados como anormais:', len(abnormal_data))
 
     # concatenando os dataframes de casos normais e anormais
     full_data = pd.concat([normal, abnormal_data])
@@ -84,7 +84,7 @@ def pre_processamento():
     print('quantidade de imagens de teste:', len(test_df['filepath']))
     print('quantidade de rótulos de teste:', len(test_df['target']))
     print('quantidade de imagens de validação:', len(validation_df['filepath']))
-    print('quantidade de rótulos de validação:', len(validation_df['target']))
+    print('quantidade de rótulos de validação:', len(validation_df['target']), '\n')
 
     # normalizando as imagens de treinamento e aplicando aumento de dados
     image_generator = ImageDataGenerator(rescale = 1./255.,
