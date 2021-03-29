@@ -7,7 +7,7 @@ from tensorflow import keras
 import warnings
 warnings.filterwarnings("ignore")
 
-def lime_plot(path, img_size, model_base):
+def lime_plot(path, img_size, model_base, top_labels = 1, label_select = 0, num_sampes = 3000):
   '''plota os gráficos do algoritmo lime'''
 
   explainer = lime_image.LimeImageExplainer()
@@ -16,26 +16,26 @@ def lime_plot(path, img_size, model_base):
   img_array = preprocess_input(get_img_array(img_path, img_size))
 
   explanation = explainer.explain_instance(img_array[0].astype('double'), model_base.predict, 
-                                          top_labels = 1, hide_color=0, num_samples=3000)
+                                          top_labels = top_labels, hide_color=0, num_samples=3000)
 
-  print('image predict: {}'.format(float(model_base.predict(img_array) * 100)))
+  print('image predict: {} %'.format((model_base.predict(img_array) * 100)))
 
   plt.figure(figsize = (15, 15))
 
   plt.subplot(2, 2, 1)
   plt.imshow(img_array[0])
 
-  temp, mask = explanation.get_image_and_mask(explanation.top_labels[0], positive_only=True, 
+  temp, mask = explanation.get_image_and_mask(explanation.top_labels[label_select], positive_only=True, 
                                               num_features=50, hide_rest=False)
   plt.subplot(2, 2, 2)
   plt.imshow(mark_boundaries(temp / 2 + 0.5, mask))
 
-  temp, mask = explanation.get_image_and_mask(explanation.top_labels[0], positive_only=False, 
+  temp, mask = explanation.get_image_and_mask(explanation.top_labels[label_select], positive_only=False, 
                                               num_features=50, hide_rest=False)
   plt.subplot(2, 2, 3)
   plt.imshow(mark_boundaries(temp / 2 + 0.5, mask))
 
-  ind =  explanation.top_labels[0]
+  ind =  explanation.top_labels[label_select]
 
   dict_heatmap = dict(explanation.local_exp[ind])
   heatmap = np.vectorize(dict_heatmap.get)(explanation.segments) 
