@@ -57,8 +57,8 @@ def pre_processamento():
     # removendo 69% dos casos normais para balancear os dados
     normal, _ = train_test_split(normal_data, test_size = 0.69, random_state = 42)
 
-    print('quantidade de dados rotulados como normais (balanceado):', len(normal))
-    print('quantidade de dados rotulados como anormais:', len(abnormal_data))
+    print('\nquantidade de dados rotulados como normais (balanceado):', len(normal))
+    print('quantidade de dados rotulados como anormais:\n', len(abnormal_data))
 
     # concatenando os dataframes de casos normais e anormais
     full_data = pd.concat([normal, abnormal_data])
