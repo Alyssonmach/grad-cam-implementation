@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 
 def get_img_array(img_path, size):
-  '''retorna o array de uma imagem'''
+    '''retorna o array de uma imagem'''
   
     # carregando a imagem com o keras e organizando suas dimensões
     try:
@@ -22,7 +22,7 @@ def get_img_array(img_path, size):
     return array
 
 def make_gradcam_heatmap(img_array, model, last_conv_layer_name, pred_index=None):
-  '''constroi o mapa de calor do grad cam'''
+    '''constroi o mapa de calor do grad cam'''
 
     # definindo a entrada e a saída do modelo com base na arquitetura importada
     grad_model = tf.keras.models.Model([model.inputs], 
@@ -56,7 +56,7 @@ def make_gradcam_heatmap(img_array, model, last_conv_layer_name, pred_index=None
     return heatmap.numpy()
 
 def save_and_display_gradcam(img_path, heatmap, cam_path="cam.jpg", alpha=0.4):
-  '''salva e plota o mapa de calor sobreposto na imagem de base'''
+    '''salva e plota o mapa de calor sobreposto na imagem de base'''
 
     # carregando a imagem original
     try:
@@ -93,30 +93,31 @@ def save_and_display_gradcam(img_path, heatmap, cam_path="cam.jpg", alpha=0.4):
     return None
     
 def get_grad_cam(img_size, preprocess_input, last_conv_layer, image_path, model_base, model_grad):
+    '''plota os gráficos do grad cam'''
 
-  # baixando e visualizando a imagem a ser utilizada com o Grad-Cam
-  img_path = keras.preprocessing.image.load_img(path, target_size = img_size)
+    # baixando e visualizando a imagem a ser utilizada com o Grad-Cam
+    img_path = keras.preprocessing.image.load_img(path, target_size = img_size)
 
-  # preparando a imagem
-  img_array = preprocess_input(get_img_array(img_path, img_size))
+    # preparando a imagem
+    img_array = preprocess_input(get_img_array(img_path, img_size))
 
-  # fazendo uma predição com a rede para a imagem utilizada 
-  print('Porcentagem de anormalidade:', model_base.predict(img_array) * 100,'%')
+    # fazendo uma predição com a rede para a imagem utilizada 
+    print('Porcentagem de anormalidade:', model_base.predict(img_array) * 100,'%')
 
-  # plotando a imagem
-  display(img_path)
+    # plotando a imagem
+    display(img_path)
 
-  # removendo a função de ativação da última camada
-  model_grad.layers[-1].activation = None
+    # removendo a função de ativação da última camada
+    model_grad.layers[-1].activation = None
 
-  # gerando o mapa de ativação de classe (Grad-Cam)
-  heatmap = make_gradcam_heatmap(img_array, model_grad, last_conv_layer)
+    # gerando o mapa de ativação de classe (Grad-Cam)
+    heatmap = make_gradcam_heatmap(img_array, model_grad, last_conv_layer)
 
-  # visualizando o mapa de calor gerado pelo Grad-Cam
-  plt.matshow(heatmap)
-  plt.show()
+    # visualizando o mapa de calor gerado pelo Grad-Cam
+    plt.matshow(heatmap)
+    plt.show()
 
-  # resultado final do algoritmo Grad-Cam
-  save_and_display_gradcam(img_path, heatmap, cam_path = 'image4.jpg')
+    # resultado final do algoritmo Grad-Cam
+    save_and_display_gradcam(img_path, heatmap, cam_path = 'image4.jpg')
 
-  return None
+    return None
