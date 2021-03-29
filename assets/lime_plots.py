@@ -18,7 +18,7 @@ def lime_plot(path, img_size, model_base):
   explanation = explainer.explain_instance(img_array[0].astype('double'), model_base.predict, 
                                           top_labels = 1, hide_color=0, num_samples=3000)
 
-  print('image predict: {}'.format(model_base.predict(img_array)))
+  print('image predict: {}'.format(float(model_base.predict(img_array) * 100)))
 
   plt.figure(figsize = (15, 15))
 
