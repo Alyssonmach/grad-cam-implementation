@@ -118,6 +118,6 @@ def get_grad_cam(img_size, preprocess_input, last_conv_layer, path, model_base, 
     plt.show()
 
     # resultado final do algoritmo Grad-Cam
-    heatmap_grad = save_and_display_gradcam(img_path, heatmap, cam_path = save_file)
+    save_and_display_gradcam(img_path, heatmap, cam_path = save_file)
 
-    return heatmap_grad
+    return None
