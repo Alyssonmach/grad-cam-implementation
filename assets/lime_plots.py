@@ -2,6 +2,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from skimage.segmentation import mark_boundaries
+!pip install lime
 from lime import lime_image
 from tensorflow import keras
 import warnings
