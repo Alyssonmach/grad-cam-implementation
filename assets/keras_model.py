@@ -27,7 +27,7 @@ def pre_processamento():
     print('total de imagens disponíveis:', str(len(set(dataframe['image_path']))))
 
     # visualizando os casos disponíveis
-    dataframe['\nclass_name'].value_counts()
+    dataframe['class_name'].value_counts()
 
     # removendo os casos não relativos a distúrbios pulmonares
     dataframe = dataframe[dataframe.class_name != 'Aortic enlargement']
