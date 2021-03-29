@@ -90,7 +90,7 @@ def save_and_display_gradcam(img_path, heatmap, cam_path="cam.jpg", alpha=0.4):
     # plotando a imagem obtida
     display(Image(cam_path))
     
-    return None
+    return jet_heatmap
     
 def get_grad_cam(img_size, preprocess_input, last_conv_layer, path, model_base, model_grad, save_file = 'image.png'):
     '''plota os gráficos do grad cam'''
