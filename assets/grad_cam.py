@@ -92,7 +92,7 @@ def save_and_display_gradcam(img_path, heatmap, cam_path="cam.jpg", alpha=0.4):
     
     return None
     
-def get_grad_cam(img_size, preprocess_input, last_conv_layer, path, model_base, model_grad):
+def get_grad_cam(img_size, preprocess_input, last_conv_layer, path, model_base, model_grad, save_file = 'image.png'):
     '''plota os gráficos do grad cam'''
 
     # baixando e visualizando a imagem a ser utilizada com o Grad-Cam
@@ -118,6 +118,6 @@ def get_grad_cam(img_size, preprocess_input, last_conv_layer, path, model_base, 
     plt.show()
 
     # resultado final do algoritmo Grad-Cam
-    save_and_display_gradcam(img_path, heatmap, cam_path = 'image4.jpg')
+    save_and_display_gradcam(img_path, heatmap, cam_path = save_file)
 
     return None
