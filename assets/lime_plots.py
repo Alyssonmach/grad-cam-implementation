@@ -7,7 +7,23 @@ from tensorflow import keras
 import warnings
 warnings.filterwarnings("ignore")
 
-def lime_plot(path, img_size, model_base, top_labels = 1, label_select = 0, preprocess_input, num_sampes = 3000):
+def get_img_array(img_path, size):
+    '''retorna o array de uma imagem'''
+  
+    # carregando a imagem com o keras e organizando suas dimensões
+    try:
+      img = keras.preprocessing.image.load_img(img_path, target_size=size)
+    except:
+      img = img_path
+    # pegando o array de píxels de cada um dos canais da imagem (299, 299, 3)
+    array = keras.preprocessing.image.img_to_array(img)
+    # adicionando a dimensão de 'batch' (1, 299, 299, 3)
+    array = np.expand_dims(array, axis=0)
+
+    return array
+
+def lime_plot(path, img_size, model_base, top_labels, label_select, preprocess_input, 
+              num_samples = 3000):
   '''plota os gráficos do algoritmo lime'''
 
   explainer = lime_image.LimeImageExplainer()
