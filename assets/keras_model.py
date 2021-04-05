@@ -17,7 +17,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
-def pre_processamento():
+def pre_processamento(test_data = True):
     
     # lendo os dados de um arquivo csv
     dataframe = pd.read_csv('/content/drive/MyDrive/vinbigdata/train.csv')
@@ -130,14 +130,16 @@ def pre_processamento():
     # carregando o melhor modelo para realização de testes de desempenho
     model_grad = tf.keras.models.load_model('/content/drive/MyDrive/experimentos/experimento2-dataset4/model2')
     model_base = tf.keras.models.load_model('/content/drive/MyDrive/experimentos/experimento2-dataset4/model2')
-
-    # carregando os dados de teste
-    for i in range(0, 42):
-      (x1, y1) = test_generator[i]
-      if i == 0:
-        x, y = x1, y1
-      else:
-        x = np.concatenate((x, x1))
-        y = np.concatenate((y, y1))
-        
+    
+    if test_data == True:
+        # carregando os dados de teste
+        for i in range(0, 42):
+          (x1, y1) = test_generator[i]
+          if i == 0:
+            x, y = x1, y1
+          else:
+            x = np.concatenate((x, x1))
+            y = np.concatenate((y, y1))
+    else:
+        x, y = list(), list()
     return model_grad, model_base, (x, y)
