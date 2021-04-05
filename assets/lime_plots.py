@@ -7,7 +7,7 @@ from tensorflow import keras
 import warnings
 warnings.filterwarnings("ignore")
 
-def lime_plot(path, img_size, model_base, top_labels = 1, label_select = 0, preprocess_input = preprocess_input, num_sampes = 3000):
+def lime_plot(path, img_size, model_base, top_labels = 1, label_select = 0, preprocess_input, num_sampes = 3000):
   '''plota os gráficos do algoritmo lime'''
 
   explainer = lime_image.LimeImageExplainer()
