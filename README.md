@@ -2,21 +2,23 @@
 ***
 A technique for making Convolutional Neural Network (CNN)-based models more transparent by visualizing the regions of input that are “important” for predictions from these models — or visual explanations.
 
-Algoritmos de visualização gráfica para redes neurais convolucionais são úteis para entender o que as camadas de convolução estão dando mais destaque em imagens digitais. Particularmente na área médica, esses métodos se mostram eficazes para validar a eficâcia dos modelos criado, já que esses necessitam ser bem arquitetados. Tendo em vista essas observações, dois algoritmos mostraram-se relevantes para essas finalidades, são eles:
+Graphical visualization algorithms for convolutional neural networks are useful to understand what the layers of convolution are giving more prominence in digital images. Particularly in the medical field, these methods prove to be effective to validate the effectiveness of the models created, since they need to be well designed. In view of these observations, two algorithms have been shown to be relevant for these purposes, they are:
 
 - [Grad CAM](https://github.com/Alyssonmach/class-activation-maps/blob/main/lectures/1-activation-class-map.pdf)
 - [LIME](https://github.com/Alyssonmach/class-activation-maps/blob/main/lectures/2-lime-algorithm.pdf)
 
-Para maiores esclarecimentos, os slides acima garantem explicações teóricas sobre os dois algoritmos.
+For further clarification, the slides above guarantee theoretical explanations about the two algorithms.
 
-### Exemplos de imagens da Grad CAM
+### Sample images from Grad CAM
+***
 
 |||
 |-|-|
-|![image5](images/grad-cam/image5.jpg)||[image7](images/grad-cam/image7.jpg)|
-|![image2](images/grad-cam/image2.jpg)||[image3](images/grad-cam/image3.jpg)|
+|![image5](images/grad-cam/image5.jpg)|![image7](images/grad-cam/image7.jpg)|
+|![image2](images/grad-cam/image2.jpg)|![image3](images/grad-cam/image3.jpg)|
 
-### Exemplos de imagens do LIME
+### Examples of LIME images
+***
 
 ![image4](images/lime/image4.png)
 
