@@ -31,7 +31,7 @@ def grad_one_channel(heatmap, image_size, threshold = 150):
     for j in range(0, image_size[1]):
       one_channel[i,j] = channel1[i,j] or channel2[i,j] or channel3[i,j]
 
-  return one_channel
+  return one_channel, (channel1, channel2, channel3)
 
 def heatmap_intersection(heatmap_lime, heatmap_grad, image_size):
   '''função que faz a intersecção entre os mapas de calor'''
